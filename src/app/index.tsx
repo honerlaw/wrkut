@@ -1,7 +1,1 @@
-import { View, Text } from "react-native"
-
-export default function Landing() {
-  return <View>
-      <Text>Hello world</Text>
-  </View>
-}
+export { LandingRoute as default } from "@/src/components/routes/Landing";
