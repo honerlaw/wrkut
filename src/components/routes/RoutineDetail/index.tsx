@@ -1,0 +1,1 @@
+export { RoutineDetailRoute } from "./RoutineDetailRoute";

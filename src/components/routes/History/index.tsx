@@ -1,0 +1,1 @@
+export { HistoryRoute } from "./HistoryRoute";
