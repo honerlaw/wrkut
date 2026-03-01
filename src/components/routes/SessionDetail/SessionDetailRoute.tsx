@@ -8,6 +8,7 @@ import { ErrorState } from "@/src/components/ui/ErrorState";
 import { Skeleton } from "@/src/components/ui/Skeleton";
 import { Typography } from "@/src/components/ui/Typography";
 import { useApiClient } from "@/src/hooks/useApiClient";
+import { useThemeColors } from "@/src/hooks/useThemeColors";
 import type { SessionDetail } from "@/src/types/session";
 import { formatDuration } from "@/src/utils/formatDuration";
 
@@ -21,6 +22,7 @@ export function SessionDetailRoute() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const apiClient = useApiClient();
   const router = useRouter();
+  const colors = useThemeColors();
 
   const [session, setSession] = useState<SessionDetail | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -48,7 +50,7 @@ export function SessionDetailRoute() {
     <SafeAreaView className="flex-1 bg-background">
       <View className="flex-row items-center px-4 pb-2 pt-4">
         <Pressable onPress={() => router.back()} className="p-2">
-          <Ionicons name="arrow-back" size={24} color="#f4f4f5" />
+          <Ionicons name="arrow-back" size={24} color={colors.textPrimary} />
         </Pressable>
         <View className="flex-1 px-2">
           <Typography variant="h2" className="text-center">
@@ -175,13 +177,13 @@ export function SessionDetailRoute() {
                           <Ionicons
                             name="checkmark-circle"
                             size={18}
-                            color="#84cc16"
+                            color={colors.accent}
                           />
                         ) : (
                           <Ionicons
                             name="close-circle-outline"
                             size={18}
-                            color="#3f3f46"
+                            color={colors.muted}
                           />
                         )}
                       </View>

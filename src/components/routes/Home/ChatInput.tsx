@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Pressable, View } from "react-native";
 
 import { Input } from "@/src/components/ui/Input";
+import { useThemeColors } from "@/src/hooks/useThemeColors";
 
 import { useVoiceInput } from "./hooks/useVoiceInput";
 
@@ -12,6 +13,7 @@ type ChatInputProps = {
 };
 
 export function ChatInput({ onSend, isDisabled }: ChatInputProps) {
+  const colors = useThemeColors();
   const [text, setText] = useState("");
   const {
     isListening,
@@ -54,7 +56,7 @@ export function ChatInput({ onSend, isDisabled }: ChatInputProps) {
           <Ionicons
             name={isListening ? "mic" : "mic-outline"}
             size={24}
-            color={isListening ? "#09090b" : "#a1a1aa"}
+            color={isListening ? colors.background : colors.textSecondary}
           />
         </Pressable>
       )}
@@ -76,7 +78,7 @@ export function ChatInput({ onSend, isDisabled }: ChatInputProps) {
         <Ionicons
           name="arrow-up"
           size={24}
-          color={canSend ? "#09090b" : "#a1a1aa"}
+          color={canSend ? colors.background : colors.textSecondary}
         />
       </Pressable>
     </View>

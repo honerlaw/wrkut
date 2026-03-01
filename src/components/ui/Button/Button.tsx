@@ -14,7 +14,7 @@ type ButtonProps = {
 
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {
   primary: "bg-accent active:bg-accent-pressed",
-  secondary: "bg-surface border border-border active:bg-zinc-800",
+  secondary: "bg-surface border border-border active:bg-border",
   destructive: "bg-destructive active:bg-red-600",
   ghost: "bg-transparent active:bg-surface",
 };

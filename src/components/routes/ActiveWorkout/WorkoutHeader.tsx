@@ -2,6 +2,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { Pressable, View } from "react-native";
 
 import { Typography } from "@/src/components/ui/Typography";
+import { useThemeColors } from "@/src/hooks/useThemeColors";
 
 type WorkoutHeaderProps = {
   elapsedSeconds: number;
@@ -25,6 +26,7 @@ export function WorkoutHeader({
   totalSets,
   onStop,
 }: WorkoutHeaderProps) {
+  const colors = useThemeColors();
   const progress = totalSets > 0 ? (completedSets / totalSets) * 100 : 0;
 
   return (
@@ -41,7 +43,7 @@ export function WorkoutHeader({
       </View>
 
       <Pressable onPress={onStop} className="p-2">
-        <Ionicons name="close" size={24} color="#ef4444" />
+        <Ionicons name="close" size={24} color={colors.destructive} />
       </Pressable>
     </View>
   );

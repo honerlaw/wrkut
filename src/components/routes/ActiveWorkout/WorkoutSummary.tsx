@@ -3,6 +3,7 @@ import { View } from "react-native";
 
 import { Button } from "@/src/components/ui/Button";
 import { Typography } from "@/src/components/ui/Typography";
+import { useThemeColors } from "@/src/hooks/useThemeColors";
 import type { WorkoutExercise } from "@/src/types/workout";
 
 type WorkoutSummaryProps = {
@@ -27,12 +28,13 @@ export function WorkoutSummary({
   exercises,
   onDone,
 }: WorkoutSummaryProps) {
+  const colors = useThemeColors();
   const percentage =
     totalSets > 0 ? Math.round((completedSets / totalSets) * 100) : 0;
 
   return (
     <View className="flex-1 items-center justify-center px-6">
-      <Ionicons name="checkmark-circle" size={80} color="#84cc16" />
+      <Ionicons name="checkmark-circle" size={80} color={colors.accent} />
       <Typography variant="h1" className="mt-4">
         Workout Complete!
       </Typography>

@@ -10,11 +10,13 @@ import { ErrorState } from "@/src/components/ui/ErrorState";
 import { Skeleton } from "@/src/components/ui/Skeleton";
 import { Typography } from "@/src/components/ui/Typography";
 import { useApiClient } from "@/src/hooks/useApiClient";
+import { useThemeColors } from "@/src/hooks/useThemeColors";
 import type { Routine } from "@/src/types/routine";
 
 export function RoutineRoute() {
   const apiClient = useApiClient();
   const router = useRouter();
+  const colors = useThemeColors();
   const [routines, setRoutines] = useState<Routine[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -73,7 +75,7 @@ export function RoutineRoute() {
           <RefreshControl
             refreshing={isRefreshing}
             onRefresh={handleRefresh}
-            tintColor="#84cc16"
+            tintColor={colors.accent}
           />
         }
       >
@@ -97,7 +99,7 @@ export function RoutineRoute() {
           <ErrorState message="Failed to load routines" onRetry={handleRetry} />
         ) : isEmpty ? (
           <View className="flex-1 items-center justify-center gap-3">
-            <Ionicons name="barbell-outline" size={48} color="#3f3f46" />
+            <Ionicons name="barbell-outline" size={48} color={colors.muted} />
             <Typography variant="h3" className="text-text-secondary">
               No routines yet
             </Typography>

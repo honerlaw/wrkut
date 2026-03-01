@@ -10,6 +10,7 @@ import {
 } from "react-native";
 
 import { ErrorState } from "@/src/components/ui/ErrorState";
+import { ThemeToggle } from "@/src/components/ui/ThemeToggle";
 import { Typography } from "@/src/components/ui/Typography";
 import { useUser } from "@/src/components/UserProvider";
 
@@ -88,7 +89,10 @@ export function HomeRoute() {
         className="flex-1"
       >
         <View className="flex-row items-center justify-between px-6 pb-2 pt-4">
-          <Typography variant="h2">Chat</Typography>
+          <View className="flex-row items-center gap-2">
+            <Typography variant="h2">Chat</Typography>
+            <ThemeToggle />
+          </View>
           <Pressable onPress={handleNewChat}>
             <Typography variant="caption" className="text-accent">
               New Chat

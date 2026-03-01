@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { FlatList, View } from "react-native";
 
 import { Typography } from "@/src/components/ui/Typography";
+import { useThemeColors } from "@/src/hooks/useThemeColors";
 
 import { ChatBubble } from "./ChatBubble";
 
@@ -25,6 +26,7 @@ export function ChatMessageList({
   status,
   error,
 }: ChatMessageListProps) {
+  const colors = useThemeColors();
   const listRef = useRef<FlatList>(null);
 
   const isStreaming = status === "streaming";
@@ -54,7 +56,11 @@ export function ChatMessageList({
       ListHeaderComponent={
         error ? (
           <View className="my-2 flex-row items-center gap-2 rounded-xl bg-destructive/10 px-4 py-3">
-            <Ionicons name="alert-circle" size={18} color="#ef4444" />
+            <Ionicons
+              name="alert-circle"
+              size={18}
+              color={colors.destructive}
+            />
             <Typography variant="caption" className="flex-1 text-destructive">
               {error}
             </Typography>

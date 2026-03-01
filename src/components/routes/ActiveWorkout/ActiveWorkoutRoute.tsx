@@ -3,6 +3,7 @@ import { useCallback, useState } from "react";
 import { ActivityIndicator, SafeAreaView, ScrollView } from "react-native";
 
 import { Typography } from "@/src/components/ui/Typography";
+import { useThemeColors } from "@/src/hooks/useThemeColors";
 
 import { ExerciseBlock } from "./ExerciseBlock";
 import { useWorkoutSession } from "./hooks/useWorkoutSession";
@@ -17,6 +18,8 @@ export function ActiveWorkoutRoute() {
     routineDayId: string;
   }>();
   const router = useRouter();
+
+  const colors = useThemeColors();
 
   const {
     exercises,
@@ -67,7 +70,7 @@ export function ActiveWorkoutRoute() {
   if (isLoading) {
     return (
       <SafeAreaView className="flex-1 items-center justify-center bg-background">
-        <ActivityIndicator size="large" color="#84cc16" />
+        <ActivityIndicator size="large" color={colors.accent} />
         <Typography variant="caption" className="mt-4">
           Starting workout...
         </Typography>

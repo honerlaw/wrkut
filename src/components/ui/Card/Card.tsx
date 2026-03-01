@@ -13,7 +13,7 @@ export function Card({ className = "", children, onPress }: CardProps) {
     return (
       <Pressable
         onPress={onPress}
-        className={`${baseClasses} active:bg-zinc-800`}
+        className={`${baseClasses} active:bg-border`}
       >
         {children}
       </Pressable>

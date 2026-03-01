@@ -10,6 +10,7 @@ import { ErrorState } from "@/src/components/ui/ErrorState";
 import { Skeleton } from "@/src/components/ui/Skeleton";
 import { Typography } from "@/src/components/ui/Typography";
 import { useApiClient } from "@/src/hooks/useApiClient";
+import { useThemeColors } from "@/src/hooks/useThemeColors";
 import type { WorkoutSession } from "@/src/types/session";
 import { formatDuration } from "@/src/utils/formatDuration";
 import { groupByDate } from "@/src/utils/groupByDate";
@@ -25,6 +26,7 @@ const STATUS_BADGE_VARIANT = {
 export function HistoryRoute() {
   const apiClient = useApiClient();
   const router = useRouter();
+  const colors = useThemeColors();
 
   const [sessions, setSessions] = useState<WorkoutSession[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -117,7 +119,7 @@ export function HistoryRoute() {
           <RefreshControl
             refreshing={isRefreshing}
             onRefresh={handleRefresh}
-            tintColor="#84cc16"
+            tintColor={colors.accent}
           />
         }
       >
@@ -144,7 +146,7 @@ export function HistoryRoute() {
           />
         ) : isEmpty ? (
           <View className="flex-1 items-center justify-center gap-3">
-            <Ionicons name="time-outline" size={48} color="#3f3f46" />
+            <Ionicons name="time-outline" size={48} color={colors.muted} />
             <Typography variant="h3" className="text-text-secondary">
               No workouts yet
             </Typography>

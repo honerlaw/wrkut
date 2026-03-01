@@ -8,6 +8,7 @@ import Animated, {
 import { Badge } from "@/src/components/ui/Badge";
 import { Button } from "@/src/components/ui/Button";
 import { Typography } from "@/src/components/ui/Typography";
+import { useThemeColors } from "@/src/hooks/useThemeColors";
 import type { RoutineDay } from "@/src/types/routine";
 
 import { ExerciseRow } from "./ExerciseRow";
@@ -25,6 +26,7 @@ export function DaySection({
   onToggle,
   onStartWorkout,
 }: DaySectionProps) {
+  const colors = useThemeColors();
   const chevronStyle = useAnimatedStyle(() => ({
     transform: [
       { rotate: withTiming(isExpanded ? "180deg" : "0deg", { duration: 200 }) },
@@ -45,7 +47,11 @@ export function DaySection({
           </Badge>
         </View>
         <Animated.View style={chevronStyle}>
-          <Ionicons name="chevron-down" size={20} color="#a1a1aa" />
+          <Ionicons
+            name="chevron-down"
+            size={20}
+            color={colors.textSecondary}
+          />
         </Animated.View>
       </Pressable>
 

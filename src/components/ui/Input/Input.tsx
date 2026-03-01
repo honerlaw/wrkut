@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { type KeyboardTypeOptions, TextInput } from "react-native";
 
+import { useThemeColors } from "@/src/hooks/useThemeColors";
+
 type InputProps = {
   value: string;
   onChangeText: (text: string) => void;
@@ -21,13 +23,14 @@ export function Input({
   secureTextEntry = false,
 }: InputProps) {
   const [focused, setFocused] = useState(false);
+  const colors = useThemeColors();
 
   return (
     <TextInput
       value={value}
       onChangeText={onChangeText}
       placeholder={placeholder}
-      placeholderTextColor="#3f3f46"
+      placeholderTextColor={colors.muted}
       multiline={multiline}
       keyboardType={keyboardType}
       secureTextEntry={secureTextEntry}

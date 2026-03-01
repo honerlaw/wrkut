@@ -16,6 +16,7 @@ import { ErrorState } from "@/src/components/ui/ErrorState";
 import { Skeleton } from "@/src/components/ui/Skeleton";
 import { Typography } from "@/src/components/ui/Typography";
 import { useApiClient } from "@/src/hooks/useApiClient";
+import { useThemeColors } from "@/src/hooks/useThemeColors";
 import type { Routine } from "@/src/types/routine";
 
 import { DaySection } from "./DaySection";
@@ -25,6 +26,7 @@ export function RoutineDetailRoute() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const apiClient = useApiClient();
   const router = useRouter();
+  const colors = useThemeColors();
 
   const [routine, setRoutine] = useState<Routine | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -109,7 +111,7 @@ export function RoutineDetailRoute() {
       <SafeAreaView className="flex-1 bg-background">
         <View className="flex-row items-center px-4 pb-2 pt-4">
           <Pressable onPress={() => router.back()} className="p-2">
-            <Ionicons name="arrow-back" size={24} color="#f4f4f5" />
+            <Ionicons name="arrow-back" size={24} color={colors.textPrimary} />
           </Pressable>
           <View className="flex-1 px-2">
             <Skeleton className="mx-auto h-6 w-40" />
@@ -138,7 +140,7 @@ export function RoutineDetailRoute() {
       <SafeAreaView className="flex-1 bg-background">
         <View className="flex-row items-center px-4 pb-2 pt-4">
           <Pressable onPress={() => router.back()} className="p-2">
-            <Ionicons name="arrow-back" size={24} color="#f4f4f5" />
+            <Ionicons name="arrow-back" size={24} color={colors.textPrimary} />
           </Pressable>
         </View>
         <ErrorState message="Failed to load routine" onRetry={handleRetry} />
@@ -151,11 +153,15 @@ export function RoutineDetailRoute() {
       <SafeAreaView className="flex-1 bg-background">
         <View className="flex-row items-center px-4 pb-2 pt-4">
           <Pressable onPress={() => router.back()} className="p-2">
-            <Ionicons name="arrow-back" size={24} color="#f4f4f5" />
+            <Ionicons name="arrow-back" size={24} color={colors.textPrimary} />
           </Pressable>
         </View>
         <View className="flex-1 items-center justify-center gap-3">
-          <Ionicons name="alert-circle-outline" size={48} color="#3f3f46" />
+          <Ionicons
+            name="alert-circle-outline"
+            size={48}
+            color={colors.muted}
+          />
           <Typography variant="body" className="text-text-secondary">
             Routine not found
           </Typography>
@@ -171,7 +177,7 @@ export function RoutineDetailRoute() {
     <SafeAreaView className="flex-1 bg-background">
       <View className="flex-row items-center justify-between px-4 pb-2 pt-4">
         <Pressable onPress={() => router.back()} className="p-2">
-          <Ionicons name="arrow-back" size={24} color="#f4f4f5" />
+          <Ionicons name="arrow-back" size={24} color={colors.textPrimary} />
         </Pressable>
         <View className="flex-1 px-2">
           <Typography variant="h2" className="text-center">
@@ -179,7 +185,7 @@ export function RoutineDetailRoute() {
           </Typography>
         </View>
         <Pressable onPress={() => setShowDelete(true)} className="p-2">
-          <Ionicons name="trash-outline" size={22} color="#ef4444" />
+          <Ionicons name="trash-outline" size={22} color={colors.destructive} />
         </Pressable>
       </View>
 
@@ -190,7 +196,7 @@ export function RoutineDetailRoute() {
           <RefreshControl
             refreshing={isRefreshing}
             onRefresh={handleRefresh}
-            tintColor="#84cc16"
+            tintColor={colors.accent}
           />
         }
       >

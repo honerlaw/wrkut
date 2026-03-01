@@ -1,6 +1,7 @@
 import { createContext, useContext } from "react";
 import { ActivityIndicator, View } from "react-native";
 
+import { useThemeColors } from "@/src/hooks/useThemeColors";
 import { useUserId } from "@/src/hooks/useUserId";
 
 type UserContextValue = {
@@ -19,11 +20,12 @@ export function useUser() {
 
 export function UserProvider({ children }: { children: React.ReactNode }) {
   const value = useUserId();
+  const colors = useThemeColors();
 
   if (value.isLoading) {
     return (
       <View className="flex-1 items-center justify-center bg-background">
-        <ActivityIndicator size="large" color="#84cc16" />
+        <ActivityIndicator size="large" color={colors.accent} />
       </View>
     );
   }

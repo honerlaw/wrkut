@@ -2,6 +2,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
 import { Pressable, Text, TextInput, View } from "react-native";
 
+import { useThemeColors } from "@/src/hooks/useThemeColors";
 import type { WorkoutSet } from "@/src/types/workout";
 
 type SetRowProps = {
@@ -11,6 +12,7 @@ type SetRowProps = {
 };
 
 export function SetRow({ set, onComplete, onUncomplete }: SetRowProps) {
+  const colors = useThemeColors();
   const [repsText, setRepsText] = useState(String(set.targetReps));
 
   const handleToggle = () => {
@@ -45,7 +47,7 @@ export function SetRow({ set, onComplete, onUncomplete }: SetRowProps) {
           keyboardType="number-pad"
           editable={!set.completed}
           className="w-16 rounded-lg border border-border bg-background px-3 py-1.5 text-center text-text-primary"
-          placeholderTextColor="#3f3f46"
+          placeholderTextColor={colors.muted}
         />
       </View>
 
@@ -53,11 +55,11 @@ export function SetRow({ set, onComplete, onUncomplete }: SetRowProps) {
         <Pressable onPress={handleToggle}>
           {set.completed ? (
             <View className="h-8 w-8 items-center justify-center rounded-full bg-accent">
-              <Ionicons name="checkmark" size={18} color="#09090b" />
+              <Ionicons name="checkmark" size={18} color={colors.background} />
             </View>
           ) : (
             <View className="h-8 w-8 items-center justify-center rounded-full border-2 border-muted">
-              <Ionicons name="checkmark" size={18} color="#3f3f46" />
+              <Ionicons name="checkmark" size={18} color={colors.muted} />
             </View>
           )}
         </Pressable>
