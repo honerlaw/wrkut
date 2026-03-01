@@ -11,7 +11,8 @@
     "format": "npx prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css}\"",
     "format:fix": "npx prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css}\"",
     "typecheck": "tsc",
-    "build:web": "npx expo export --platform web"
+    "build:web": "npx expo export --platform web",
+    "start:web": "npx expo serve"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",

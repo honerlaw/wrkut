@@ -21,6 +21,7 @@ npm run format         # Check formatting (Prettier)
 npm run format:fix     # Fix formatting (Prettier)
 npm run typecheck      # Run TypeScript type checking
 npm run build:web      # Export web build
+npm run start:web      # Serve built web app (port 3000, or PORT env var)
 ```
 
 ## CI
