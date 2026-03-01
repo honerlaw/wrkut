@@ -35,7 +35,7 @@ yarn-error.*
 .env.local
 
 # Drizzle
-drizzle/meta/
+# drizzle/meta/ must be committed — it contains _journal.json needed for migrations
 
 # typescript
 *.tsbuildinfo
