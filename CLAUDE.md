@@ -23,6 +23,10 @@ npm run typecheck      # Run TypeScript type checking
 npm run build:web      # Export web build
 ```
 
+## CI
+
+GitHub Actions runs on every push to `main` and on PRs targeting `main`. It runs: lint, format check, typecheck, and web build.
+
 ## Pre-commit Checklist
 
 ```bash
