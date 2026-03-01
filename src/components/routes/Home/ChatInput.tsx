@@ -47,7 +47,7 @@ export function ChatInput({ onSend, isDisabled }: ChatInputProps) {
   const canSend = text.trim().length > 0 && !isDisabled;
 
   return (
-    <View className="flex-row items-end gap-2 border-t border-border bg-surface px-4 py-3">
+    <View className="flex-row items-end gap-2 border-t border-border bg-surface px-4 pb-20 pt-3">
       {isAvailable && (
         <Pressable
           onPress={handleMicPress}
